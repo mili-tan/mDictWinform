@@ -29,7 +29,7 @@ namespace mDictWFM
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Divider2.Hide();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -127,8 +127,33 @@ namespace mDictWFM
         {
             if (deserDict != null)
             {
+                Divider2.Show();
                 labelWord.Text = deserDict.word;
-                labelEp.Text = deserDict.amep;
+                if (deserDict.amep == "" || deserDict.amep == null)
+                {
+                    labelEp.Text = "| ω・´) ";
+                }
+                else
+                {
+                    labelEp.Text = deserDict.amep;
+                }
+                labelPos1.Text = deserDict.pos1;
+                labelMn1.Text = deserDict.mn1;
+                if (deserDict.mn2 != null || deserDict.mn2 != "")
+                {
+                    labelPos2.Text = deserDict.pos2;
+                    labelMn2.Text = deserDict.mn2;
+                }
+                if (deserDict.mn3 != null || deserDict.mn3 != "")
+                {
+                    labelPos3.Text = deserDict.pos3;
+                    labelMn3.Text = deserDict.mn3;
+                }
+                if (deserDict.mn4 != null || deserDict.mn4 != "")
+                {
+                    labelPos4.Text = deserDict.pos4;
+                    labelMn4.Text = deserDict.mn4;
+                }
             }
 
             btnSearch.Enabled = true;
