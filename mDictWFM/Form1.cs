@@ -35,6 +35,7 @@ namespace mDictWFM
         private void btnSearch_Click(object sender, EventArgs e)
         {
             backgroundWorkerDict.RunWorkerAsync();
+            btnSearch.Enabled = false;
         }
 
         async public static Task<string> bingDictionary(string Word)
@@ -96,6 +97,14 @@ namespace mDictWFM
             string wordExplain = bingDictionary(wordText.Text).Result.ToString();
             JObject bingDictJsonObj = JObject.Parse(wordExplain);
             deserDict = JsonConvert.DeserializeObject<dictData>(wordExplain);
+        }
+
+        private void backgroundWorkerDict_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            labelWord.Text = deserDict.word;
+            labelEp.Text = deserDict.amep;
+
+            btnSearch.Enabled = true;
         }
     }
 }

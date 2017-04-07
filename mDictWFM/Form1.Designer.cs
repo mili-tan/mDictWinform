@@ -93,9 +93,9 @@
             // labelWord
             // 
             this.labelWord.AutoSize = true;
-            this.labelWord.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelWord.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelWord.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelWord.Location = new System.Drawing.Point(4, 123);
+            this.labelWord.Location = new System.Drawing.Point(4, 122);
             this.labelWord.Name = "labelWord";
             this.labelWord.Size = new System.Drawing.Size(166, 44);
             this.labelWord.TabIndex = 3;
@@ -105,7 +105,7 @@
             // 
             this.labelEp.AutoSize = true;
             this.labelEp.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelEp.Location = new System.Drawing.Point(7, 174);
+            this.labelEp.Location = new System.Drawing.Point(7, 166);
             this.labelEp.Name = "labelEp";
             this.labelEp.Size = new System.Drawing.Size(79, 28);
             this.labelEp.TabIndex = 4;
@@ -114,6 +114,7 @@
             // backgroundWorkerDict
             // 
             this.backgroundWorkerDict.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDict_DoWork);
+            this.backgroundWorkerDict.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerDict_RunWorkerCompleted);
             // 
             // Form1
             // 
