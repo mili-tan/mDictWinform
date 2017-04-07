@@ -31,6 +31,9 @@
             this.labelAbout = new System.Windows.Forms.Label();
             this.btnSearch = new MaterialSkin.Controls.MaterialFlatButton();
             this.wordText = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.labelWord = new System.Windows.Forms.Label();
+            this.labelEp = new System.Windows.Forms.Label();
+            this.backgroundWorkerDict = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // labelAbout
@@ -42,7 +45,7 @@
             this.labelAbout.BackColor = System.Drawing.Color.Transparent;
             this.labelAbout.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelAbout.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelAbout.Location = new System.Drawing.Point(88, 489);
+            this.labelAbout.Location = new System.Drawing.Point(88, 518);
             this.labelAbout.Name = "labelAbout";
             this.labelAbout.Size = new System.Drawing.Size(174, 22);
             this.labelAbout.TabIndex = 0;
@@ -50,6 +53,8 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.AutoSize = true;
             this.btnSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSearch.Depth = 0;
@@ -67,6 +72,8 @@
             // 
             // wordText
             // 
+            this.wordText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.wordText.Depth = 0;
             this.wordText.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.wordText.Hint = "输入你想要查询的单词";
@@ -83,11 +90,38 @@
             this.wordText.TabStop = false;
             this.wordText.UseSystemPasswordChar = false;
             // 
+            // labelWord
+            // 
+            this.labelWord.AutoSize = true;
+            this.labelWord.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelWord.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelWord.Location = new System.Drawing.Point(4, 123);
+            this.labelWord.Name = "labelWord";
+            this.labelWord.Size = new System.Drawing.Size(166, 44);
+            this.labelWord.TabIndex = 3;
+            this.labelWord.Text = "labelWord";
+            // 
+            // labelEp
+            // 
+            this.labelEp.AutoSize = true;
+            this.labelEp.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelEp.Location = new System.Drawing.Point(7, 174);
+            this.labelEp.Name = "labelEp";
+            this.labelEp.Size = new System.Drawing.Size(79, 28);
+            this.labelEp.TabIndex = 4;
+            this.labelEp.Text = "labelEp";
+            // 
+            // backgroundWorkerDict
+            // 
+            this.backgroundWorkerDict.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDict_DoWork);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 520);
+            this.ClientSize = new System.Drawing.Size(350, 549);
+            this.Controls.Add(this.labelEp);
+            this.Controls.Add(this.labelWord);
             this.Controls.Add(this.wordText);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.labelAbout);
@@ -105,6 +139,9 @@
         private System.Windows.Forms.Label labelAbout;
         private MaterialSkin.Controls.MaterialFlatButton btnSearch;
         private MaterialSkin.Controls.MaterialSingleLineTextField wordText;
+        private System.Windows.Forms.Label labelWord;
+        private System.Windows.Forms.Label labelEp;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerDict;
     }
 }
 
