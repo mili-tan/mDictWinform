@@ -68,7 +68,6 @@ namespace mDictWFM
                 if (Convert.ToInt32(Convert.ToChar(str.Substring(i, 1))) < Convert.ToInt32(Convert.ToChar(128)))
                 {
                     BoolVal = false;
-
                 }
                 else
                 {
@@ -94,15 +93,43 @@ namespace mDictWFM
 
         private void backgroundWorkerDict_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            string wordExplain = bingDictionary(wordText.Text).Result.ToString();
-            JObject bingDictJsonObj = JObject.Parse(wordExplain);
-            deserDict = JsonConvert.DeserializeObject<dictData>(wordExplain);
+            try
+            {
+                string wordExplain = bingDictionary(wordText.Text).Result.ToString();
+                if (wordExplain != null || wordExplain != "" || wordExplain != " ")
+                {
+                    JObject bingDictJsonObj = JObject.Parse(wordExplain);
+                    deserDict = JsonConvert.DeserializeObject<dictData>(wordExplain);
+                }
+                else
+                {
+                    MessageBox.Show("很抱歉\n\r查询失败，请重试。");
+                }
+            }
+            catch(Exception errorMsg)
+            {
+                if (errorMsg.Message == "Error reading JObject from JsonReader. Path '', line 0, position 0.")
+                {
+                    MessageBox.Show("很抱歉\n\r" + "似乎发生了一些事情？\n\r未查询到任何内容。");
+                }
+                else if (errorMsg.Message == "发生一个或多个错误。")
+                {
+                    MessageBox.Show("很抱歉\n\r" + "似乎发生了一些事情？\n\r请重试。");
+                }
+                else
+                {
+                    MessageBox.Show("很抱歉\n\r" + errorMsg.Message);
+                }
+            }
         }
 
         private void backgroundWorkerDict_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            labelWord.Text = deserDict.word;
-            labelEp.Text = deserDict.amep;
+            if (deserDict != null)
+            {
+                labelWord.Text = deserDict.word;
+                labelEp.Text = deserDict.amep;
+            }
 
             btnSearch.Enabled = true;
         }
