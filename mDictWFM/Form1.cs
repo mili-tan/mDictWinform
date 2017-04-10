@@ -13,7 +13,7 @@ namespace mDictWFM
 {
     public partial class Form1 : MaterialForm
     {
-        dictData deserDict;
+        dictDataBing deserBingDict;
 
         public Form1()
         {
@@ -34,7 +34,14 @@ namespace mDictWFM
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            backgroundWorkerDict.RunWorkerAsync();
+            if (isChinese(wordText.Text))
+            {
+
+            }
+            else
+            {
+                backgroundWorkerBingDict.RunWorkerAsync();
+            }
             btnSearch.Enabled = false;
         }
 
@@ -77,7 +84,7 @@ namespace mDictWFM
             return BoolVal;
         }
 
-        class dictData
+        class dictDataBing
         {
             public String word { get; set; }
             public String amep { get; set; }
@@ -91,7 +98,7 @@ namespace mDictWFM
             public String pos4 { get; set; }
         }
 
-        private void backgroundWorkerDict_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        private void backgroundWorkerBingDict_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             try
             {
@@ -99,7 +106,7 @@ namespace mDictWFM
                 if (wordExplain != null || wordExplain != "" || wordExplain != " ")
                 {
                     JObject bingDictJsonObj = JObject.Parse(wordExplain);
-                    deserDict = JsonConvert.DeserializeObject<dictData>(wordExplain);
+                    deserBingDict = JsonConvert.DeserializeObject<dictDataBing>(wordExplain);
                 }
                 else
                 {
@@ -123,40 +130,52 @@ namespace mDictWFM
             }
         }
 
-        private void backgroundWorkerDict_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        private void backgroundWorkerBingDict_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            if (deserDict != null)
+            if (deserBingDict != null)
             {
                 Divider2.Show();
-                labelWord.Text = deserDict.word;
-                if (deserDict.amep == "" || deserDict.amep == null)
+                labelWord.Text = deserBingDict.word;
+                if (deserBingDict.amep == "" || deserBingDict.amep == null)
                 {
                     labelEp.Text = "| ω・´) ";
                 }
                 else
                 {
-                    labelEp.Text = deserDict.amep;
+                    labelEp.Text = deserBingDict.amep;
                 }
-                labelPos1.Text = deserDict.pos1;
-                labelMn1.Text = deserDict.mn1;
-                if (deserDict.mn2 != null || deserDict.mn2 != "")
+                labelPos1.Text = deserBingDict.pos1;
+                labelMn1.Text = deserBingDict.mn1;
+                if (deserBingDict.mn2 != null || deserBingDict.mn2 != "")
                 {
-                    labelPos2.Text = deserDict.pos2;
-                    labelMn2.Text = deserDict.mn2;
+                    labelPos2.Text = deserBingDict.pos2;
+                    labelMn2.Text = deserBingDict.mn2;
                 }
-                if (deserDict.mn3 != null || deserDict.mn3 != "")
+                if (deserBingDict.mn3 != null || deserBingDict.mn3 != "")
                 {
-                    labelPos3.Text = deserDict.pos3;
-                    labelMn3.Text = deserDict.mn3;
+                    labelPos3.Text = deserBingDict.pos3;
+                    labelMn3.Text = deserBingDict.mn3;
                 }
-                if (deserDict.mn4 != null || deserDict.mn4 != "")
+                if (deserBingDict.mn4 != null || deserBingDict.mn4 != "")
                 {
-                    labelPos4.Text = deserDict.pos4;
-                    labelMn4.Text = deserDict.mn4;
+                    labelPos4.Text = deserBingDict.pos4;
+                    labelMn4.Text = deserBingDict.mn4;
                 }
             }
 
             btnSearch.Enabled = true;
+        }
+
+        private void wordText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && wordText.Text != "")
+            {
+                btnSearch_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Delete)
+            {
+                wordText.Clear();
+            }
         }
     }
 }

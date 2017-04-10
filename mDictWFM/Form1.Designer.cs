@@ -33,7 +33,7 @@
             this.wordText = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.labelWord = new System.Windows.Forms.Label();
             this.labelEp = new System.Windows.Forms.Label();
-            this.backgroundWorkerDict = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorkerBingDict = new System.ComponentModel.BackgroundWorker();
             this.Divider1 = new MaterialSkin.Controls.MaterialDivider();
             this.labelPos1 = new System.Windows.Forms.Label();
             this.Divider2 = new MaterialSkin.Controls.MaterialDivider();
@@ -63,8 +63,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.AutoSize = true;
             this.btnSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSearch.Depth = 0;
@@ -99,6 +98,7 @@
             this.wordText.TabIndex = 2;
             this.wordText.TabStop = false;
             this.wordText.UseSystemPasswordChar = false;
+            this.wordText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.wordText_KeyDown);
             // 
             // labelWord
             // 
@@ -121,13 +121,15 @@
             this.labelEp.TabIndex = 4;
             this.labelEp.Text = "labelEp";
             // 
-            // backgroundWorkerDict
+            // backgroundWorkerBingDict
             // 
-            this.backgroundWorkerDict.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDict_DoWork);
-            this.backgroundWorkerDict.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerDict_RunWorkerCompleted);
+            this.backgroundWorkerBingDict.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerBingDict_DoWork);
+            this.backgroundWorkerBingDict.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerBingDict_RunWorkerCompleted);
             // 
             // Divider1
             // 
+            this.Divider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Divider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Divider1.Depth = 0;
             this.Divider1.ForeColor = System.Drawing.SystemColors.ScrollBar;
@@ -150,6 +152,8 @@
             // 
             // Divider2
             // 
+            this.Divider2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Divider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Divider2.Depth = 0;
             this.Divider2.ForeColor = System.Drawing.SystemColors.ScrollBar;
@@ -204,7 +208,7 @@
             // 
             this.labelPos3.AutoSize = true;
             this.labelPos3.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPos3.Location = new System.Drawing.Point(8, 320);
+            this.labelPos3.Location = new System.Drawing.Point(9, 320);
             this.labelPos3.Name = "labelPos3";
             this.labelPos3.Size = new System.Drawing.Size(75, 21);
             this.labelPos3.TabIndex = 11;
@@ -252,6 +256,7 @@
             this.Controls.Add(this.labelAbout);
             this.Name = "Form1";
             this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "mDict";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -266,7 +271,7 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField wordText;
         private System.Windows.Forms.Label labelWord;
         private System.Windows.Forms.Label labelEp;
-        private System.ComponentModel.BackgroundWorker backgroundWorkerDict;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerBingDict;
         private MaterialSkin.Controls.MaterialDivider Divider1;
         private System.Windows.Forms.Label labelPos1;
         private MaterialSkin.Controls.MaterialDivider Divider2;
