@@ -170,11 +170,18 @@ namespace mDictWFM
         {
             if (e.KeyCode == Keys.Enter && wordText.Text != "")
             {
-                btnSearch_Click(sender, e);
+                if (btnSearch.Enabled != false)
+                {
+                    btnSearch_Click(sender, e);
+                }
             }
-            if (e.KeyCode == Keys.Delete)
+            else if (e.KeyCode == Keys.Delete)
             {
                 wordText.Clear();
+            }
+            else if (e.KeyData == (Keys.Control | Keys.M) && wordText.Text != "")
+            {
+                Clipboard.SetDataObject(labelWord.Text+"："+labelMn1.Text+"；"+labelMn2.Text);
             }
         }
     }
