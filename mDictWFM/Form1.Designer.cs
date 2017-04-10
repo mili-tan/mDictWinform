@@ -51,15 +51,15 @@
             this.labelAbout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelAbout.AutoEllipsis = true;
-            this.labelAbout.AutoSize = true;
             this.labelAbout.BackColor = System.Drawing.Color.Transparent;
             this.labelAbout.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelAbout.ForeColor = System.Drawing.Color.Silver;
-            this.labelAbout.Location = new System.Drawing.Point(88, 519);
+            this.labelAbout.Location = new System.Drawing.Point(-2, 513);
             this.labelAbout.Name = "labelAbout";
-            this.labelAbout.Size = new System.Drawing.Size(174, 22);
+            this.labelAbout.Size = new System.Drawing.Size(355, 36);
             this.labelAbout.TabIndex = 0;
             this.labelAbout.Text = "数据来源 : Bing / Youdao";
+            this.labelAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSearch
             // 
@@ -107,9 +107,9 @@
             this.labelWord.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelWord.Location = new System.Drawing.Point(4, 124);
             this.labelWord.Name = "labelWord";
-            this.labelWord.Size = new System.Drawing.Size(166, 44);
+            this.labelWord.Size = new System.Drawing.Size(27, 44);
             this.labelWord.TabIndex = 3;
-            this.labelWord.Text = "labelWord";
+            this.labelWord.Text = " ";
             // 
             // labelEp
             // 
@@ -117,9 +117,9 @@
             this.labelEp.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelEp.Location = new System.Drawing.Point(8, 168);
             this.labelEp.Name = "labelEp";
-            this.labelEp.Size = new System.Drawing.Size(61, 22);
+            this.labelEp.Size = new System.Drawing.Size(13, 22);
             this.labelEp.TabIndex = 4;
-            this.labelEp.Text = "labelEp";
+            this.labelEp.Text = " ";
             // 
             // backgroundWorkerBingDict
             // 
@@ -142,13 +142,14 @@
             // 
             // labelPos1
             // 
+            this.labelPos1.AutoEllipsis = true;
             this.labelPos1.AutoSize = true;
             this.labelPos1.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelPos1.Location = new System.Drawing.Point(9, 218);
             this.labelPos1.Name = "labelPos1";
-            this.labelPos1.Size = new System.Drawing.Size(75, 21);
+            this.labelPos1.Size = new System.Drawing.Size(13, 21);
             this.labelPos1.TabIndex = 6;
-            this.labelPos1.Text = "labelPos1";
+            this.labelPos1.Text = " ";
             // 
             // Divider2
             // 
@@ -166,73 +167,80 @@
             // 
             // labelMn1
             // 
+            this.labelMn1.AutoEllipsis = true;
             this.labelMn1.AutoSize = true;
             this.labelMn1.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelMn1.Location = new System.Drawing.Point(7, 239);
             this.labelMn1.Name = "labelMn1";
-            this.labelMn1.Size = new System.Drawing.Size(98, 30);
+            this.labelMn1.Size = new System.Drawing.Size(17, 30);
             this.labelMn1.TabIndex = 8;
-            this.labelMn1.Text = "labelMn1";
+            this.labelMn1.Text = " ";
             // 
             // labelMn2
             // 
+            this.labelMn2.AutoEllipsis = true;
             this.labelMn2.AutoSize = true;
             this.labelMn2.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelMn2.Location = new System.Drawing.Point(7, 290);
             this.labelMn2.Name = "labelMn2";
-            this.labelMn2.Size = new System.Drawing.Size(98, 30);
+            this.labelMn2.Size = new System.Drawing.Size(17, 30);
             this.labelMn2.TabIndex = 10;
-            this.labelMn2.Text = "labelMn2";
+            this.labelMn2.Text = " ";
             // 
             // labelPos2
             // 
+            this.labelPos2.AutoEllipsis = true;
             this.labelPos2.AutoSize = true;
             this.labelPos2.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelPos2.Location = new System.Drawing.Point(9, 269);
             this.labelPos2.Name = "labelPos2";
-            this.labelPos2.Size = new System.Drawing.Size(75, 21);
+            this.labelPos2.Size = new System.Drawing.Size(13, 21);
             this.labelPos2.TabIndex = 9;
-            this.labelPos2.Text = "labelPos2";
+            this.labelPos2.Text = " ";
             // 
             // labelMn3
             // 
+            this.labelMn3.AutoEllipsis = true;
             this.labelMn3.AutoSize = true;
             this.labelMn3.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelMn3.Location = new System.Drawing.Point(7, 341);
             this.labelMn3.Name = "labelMn3";
-            this.labelMn3.Size = new System.Drawing.Size(98, 30);
+            this.labelMn3.Size = new System.Drawing.Size(17, 30);
             this.labelMn3.TabIndex = 12;
-            this.labelMn3.Text = "labelMn3";
+            this.labelMn3.Text = " ";
             // 
             // labelPos3
             // 
+            this.labelPos3.AutoEllipsis = true;
             this.labelPos3.AutoSize = true;
             this.labelPos3.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelPos3.Location = new System.Drawing.Point(9, 320);
             this.labelPos3.Name = "labelPos3";
-            this.labelPos3.Size = new System.Drawing.Size(75, 21);
+            this.labelPos3.Size = new System.Drawing.Size(13, 21);
             this.labelPos3.TabIndex = 11;
-            this.labelPos3.Text = "labelPos3";
+            this.labelPos3.Text = " ";
             // 
             // labelMn4
             // 
+            this.labelMn4.AutoEllipsis = true;
             this.labelMn4.AutoSize = true;
             this.labelMn4.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelMn4.Location = new System.Drawing.Point(7, 392);
             this.labelMn4.Name = "labelMn4";
-            this.labelMn4.Size = new System.Drawing.Size(98, 30);
+            this.labelMn4.Size = new System.Drawing.Size(17, 30);
             this.labelMn4.TabIndex = 14;
-            this.labelMn4.Text = "labelMn4";
+            this.labelMn4.Text = " ";
             // 
             // labelPos4
             // 
+            this.labelPos4.AutoEllipsis = true;
             this.labelPos4.AutoSize = true;
             this.labelPos4.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelPos4.Location = new System.Drawing.Point(9, 371);
             this.labelPos4.Name = "labelPos4";
-            this.labelPos4.Size = new System.Drawing.Size(75, 21);
+            this.labelPos4.Size = new System.Drawing.Size(13, 21);
             this.labelPos4.TabIndex = 13;
-            this.labelPos4.Text = "labelPos4";
+            this.labelPos4.Text = " ";
             // 
             // Form1
             // 

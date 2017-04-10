@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace mDictWFM
 {
     public partial class Form1 : MaterialForm
     {
         dictDataBing deserBingDict;
+        string bingDictPath = "http://xtk.azurewebsites.net/BingService.aspx";
+        string yoodaoDictPath = "http://fanyi.youdao.com/openapi.do";
 
         public Form1()
         {
@@ -45,26 +48,24 @@ namespace mDictWFM
             btnSearch.Enabled = false;
         }
 
-        async public static Task<string> bingDictionary(string Word)
+        public static string postWeb(string url, string postDataStr)
         {
-            string Param;
-            byte[] Bytes;
-            Param = "Action=search&Format=jsonwv&Word=" + WebUtility.UrlEncode(Word);
-            Bytes = System.Text.Encoding.ASCII.GetBytes(Param);
-            HttpWebRequest HWR;
-            HWR = (HttpWebRequest)HttpWebRequest.Create("http://xtk.azurewebsites.net/BingService.aspx");
-            HWR.ContinueTimeout = 2000;
-            HWR.Method = "POST";
-            HWR.ContentType = "application/x-www-form-urlencoded";
-            System.IO.Stream HReqs;
-            HReqs = await HWR.GetRequestStreamAsync();
-            HReqs.Write(Bytes, 0, Bytes.Length);
-            HReqs.Dispose();
-            WebResponse WRe = await HWR.GetResponseAsync();
-            StreamReader SR = new StreamReader(WRe.GetResponseStream());
-            string postResult = await SR.ReadToEndAsync();
-            SR.Dispose();
-            return postResult;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = postDataStr.Length;
+            StreamWriter writer = new StreamWriter(request.GetRequestStream(), Encoding.ASCII);
+            writer.Write(postDataStr);
+            writer.Flush();
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string encoding = response.ContentEncoding;
+            if (encoding == null || encoding.Length < 1)
+            {
+                encoding = "UTF-8"; 
+            }
+            StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(encoding));
+            string retString = reader.ReadToEnd();
+            return retString;
         }
 
         public static bool isChinese(string str)
@@ -102,7 +103,8 @@ namespace mDictWFM
         {
             try
             {
-                string wordExplain = bingDictionary(wordText.Text).Result.ToString();
+                string wordVal = "Action=search&Format=jsonwv&Word=" + wordText.Text;
+                string wordExplain = postWeb(bingDictPath, wordVal);
                 if (wordExplain != null || wordExplain != "" || wordExplain != " ")
                 {
                     JObject bingDictJsonObj = JObject.Parse(wordExplain);
@@ -179,7 +181,7 @@ namespace mDictWFM
             {
                 wordText.Clear();
             }
-            else if (e.KeyData == (Keys.Control | Keys.M) && wordText.Text != "")
+            else if (e.KeyData == (Keys.Control | Keys.D1) && wordText.Text != "")
             {
                 Clipboard.SetDataObject(labelWord.Text+"："+labelMn1.Text+"；"+labelMn2.Text);
             }
