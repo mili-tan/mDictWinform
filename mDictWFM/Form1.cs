@@ -1,14 +1,13 @@
 ﻿using System;
 using MaterialSkin;
 using MaterialSkin.Controls;
-using System.Windows;
 using System.Net;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Text;
+using System.Web;
 
 namespace mDictWFM
 {
@@ -16,7 +15,7 @@ namespace mDictWFM
     {
         dictDataBing deserBingDict;
         string bingDictPath = "http://xtk.azurewebsites.net/BingService.aspx";
-        string yoodaoDictPath = "http://fanyi.youdao.com/openapi.do";
+        string yoodaoDictPath = "http://fanyi.youdao.com/openapi.do?keyfrom=mdict-milione&key=900659837&type=data&doctype=json&version=1.1";
 
         public Form1()
         {
@@ -39,7 +38,7 @@ namespace mDictWFM
         {
             if (isChinese(wordText.Text))
             {
-
+                backgroundWorkerYoodaoDict.RunWorkerAsync();
             }
             else
             {
@@ -61,7 +60,7 @@ namespace mDictWFM
             string encoding = response.ContentEncoding;
             if (encoding == null || encoding.Length < 1)
             {
-                encoding = "UTF-8"; 
+                encoding = "UTF-8";
             }
             StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(encoding));
             string retString = reader.ReadToEnd();
@@ -70,19 +69,19 @@ namespace mDictWFM
 
         public static bool isChinese(string str)
         {
-            bool BoolVal = false;
+            bool boolVal = false;
             for (int i = 0; i < str.Length; i++)
             {
                 if (Convert.ToInt32(Convert.ToChar(str.Substring(i, 1))) < Convert.ToInt32(Convert.ToChar(128)))
                 {
-                    BoolVal = false;
+                    boolVal = false;
                 }
                 else
                 {
-                    BoolVal = true;
+                    boolVal = true;
                 }
             }
-            return BoolVal;
+            return boolVal;
         }
 
         class dictDataBing
@@ -97,6 +96,11 @@ namespace mDictWFM
             public String pos3 { get; set; }
             public String mn4 { get; set; }
             public String pos4 { get; set; }
+        }
+
+        class dictDataYoodao
+        {
+
         }
 
         private void backgroundWorkerBingDict_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
@@ -115,7 +119,7 @@ namespace mDictWFM
                     MessageBox.Show("很抱歉\n\r查询失败，请重试。");
                 }
             }
-            catch(Exception errorMsg)
+            catch (Exception errorMsg)
             {
                 if (errorMsg.Message == "Error reading JObject from JsonReader. Path '', line 0, position 0.")
                 {
@@ -183,8 +187,47 @@ namespace mDictWFM
             }
             else if (e.KeyData == (Keys.Control | Keys.D1) && wordText.Text != "")
             {
-                Clipboard.SetDataObject(labelWord.Text+"："+labelMn1.Text+"；"+labelMn2.Text);
+                Clipboard.SetDataObject(labelWord.Text + "：" + labelMn1.Text + "；" + labelMn2.Text);
             }
+        }
+
+        private void backgroundWorkerYoodaoDict_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            try
+            {
+                string postData = string.Format("q={0}", HttpUtility.UrlEncode(wordText.Text, Encoding.UTF8));
+                string wordExplain = postWeb(yoodaoDictPath, postData);
+                if (wordExplain != null || wordExplain != "" || wordExplain != " ")
+                {
+                    JObject bingDictJsonObj = JObject.Parse(wordExplain);
+                    deserBingDict = JsonConvert.DeserializeObject<dictDataBing>(wordExplain);
+                }
+                else
+                {
+                    MessageBox.Show("很抱歉\n\r查询失败，请重试。");
+                }
+            }
+            catch (Exception errorMsg)
+            {
+                if (errorMsg.Message == "Error reading JObject from JsonReader. Path '', line 0, position 0.")
+                {
+                    MessageBox.Show("很抱歉\n\r" + "似乎发生了一些事情？\n\r未查询到任何内容。");
+                }
+                else if (errorMsg.Message == "发生一个或多个错误。")
+                {
+                    MessageBox.Show("很抱歉\n\r" + "似乎发生了一些事情？\n\r请重试。");
+                }
+                else
+                {
+                    MessageBox.Show("很抱歉\n\r" + errorMsg.Message);
+
+                }
+            }
+        }
+
+        public static String replaceJson(String replaceStr)
+        {
+            return replaceStr.Replace("[", "").Replace("]", "").Replace("\"", "").Replace(",", " ; ");
         }
     }
 }

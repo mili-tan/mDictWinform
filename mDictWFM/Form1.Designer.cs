@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelAbout = new System.Windows.Forms.Label();
             this.btnSearch = new MaterialSkin.Controls.MaterialFlatButton();
             this.wordText = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -44,6 +45,7 @@
             this.labelPos3 = new System.Windows.Forms.Label();
             this.labelMn4 = new System.Windows.Forms.Label();
             this.labelPos4 = new System.Windows.Forms.Label();
+            this.backgroundWorkerYoodaoDict = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // labelAbout
@@ -242,6 +244,10 @@
             this.labelPos4.TabIndex = 13;
             this.labelPos4.Text = " ";
             // 
+            // backgroundWorkerYoodaoDict
+            // 
+            this.backgroundWorkerYoodaoDict.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerYoodaoDict_DoWork);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -262,6 +268,7 @@
             this.Controls.Add(this.wordText);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.labelAbout);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -290,6 +297,7 @@
         private System.Windows.Forms.Label labelPos3;
         private System.Windows.Forms.Label labelMn4;
         private System.Windows.Forms.Label labelPos4;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerYoodaoDict;
     }
 }
 
