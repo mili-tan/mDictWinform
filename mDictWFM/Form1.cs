@@ -14,6 +14,8 @@ namespace mDictWFM
     public partial class Form1 : MaterialForm
     {
         dictDataBing deserBingDict;
+        dictDataYoodao deserYoodaoDict;
+        dictDataYoodaoPho deserYoodaoDictPho;
         string bingDictPath = "http://xtk.azurewebsites.net/BingService.aspx";
         string yoodaoDictPath = "http://fanyi.youdao.com/openapi.do?keyfrom=mdict-milione&key=900659837&type=data&doctype=json&version=1.1";
 
@@ -100,7 +102,14 @@ namespace mDictWFM
 
         class dictDataYoodao
         {
+            public String basic { get; set; }
+            public String query { get; set; }
+            public String translation { get; set; }
+        }
 
+        class dictDataYoodaoPho
+        {
+            public String phonetic { get; set; }
         }
 
         private void backgroundWorkerBingDict_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
@@ -111,7 +120,6 @@ namespace mDictWFM
                 string wordExplain = postWeb(bingDictPath, wordVal);
                 if (wordExplain != null || wordExplain != "" || wordExplain != " ")
                 {
-                    JObject bingDictJsonObj = JObject.Parse(wordExplain);
                     deserBingDict = JsonConvert.DeserializeObject<dictDataBing>(wordExplain);
                 }
                 else
@@ -199,8 +207,8 @@ namespace mDictWFM
                 string wordExplain = postWeb(yoodaoDictPath, postData);
                 if (wordExplain != null || wordExplain != "" || wordExplain != " ")
                 {
-                    JObject bingDictJsonObj = JObject.Parse(wordExplain);
-                    deserBingDict = JsonConvert.DeserializeObject<dictDataBing>(wordExplain);
+                    deserYoodaoDict = JsonConvert.DeserializeObject<dictDataYoodao>(wordExplain);
+                    deserYoodaoDictPho = JsonConvert.DeserializeObject<dictDataYoodaoPho>(deserYoodaoDict.basic.ToString());
                 }
                 else
                 {
