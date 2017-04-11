@@ -102,14 +102,15 @@ namespace mDictWFM
 
         class dictDataYoodao
         {
-            public String basic { get; set; }
-            public String query { get; set; }
-            public String translation { get; set; }
+            public Object basic { get; set; }
+            public Object query { get; set; }
+            public JArray translation { get; set; }
         }
 
         class dictDataYoodaoPho
         {
-            public String phonetic { get; set; }
+            public Object phonetic { get; set; }
+            public JArray explains { get; set; }
         }
 
         private void backgroundWorkerBingDict_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
@@ -205,6 +206,7 @@ namespace mDictWFM
             {
                 string postData = string.Format("q={0}", HttpUtility.UrlEncode(wordText.Text, Encoding.UTF8));
                 string wordExplain = postWeb(yoodaoDictPath, postData);
+                MessageBox.Show(wordExplain);
                 if (wordExplain != null || wordExplain != "" || wordExplain != " ")
                 {
                     deserYoodaoDict = JsonConvert.DeserializeObject<dictDataYoodao>(wordExplain);
@@ -235,7 +237,49 @@ namespace mDictWFM
 
         public static String replaceJson(String replaceStr)
         {
-            return replaceStr.Replace("[", "").Replace("]", "").Replace("\"", "").Replace(",", " ; ");
+            string Str =  replaceStr.Replace("[", "").Replace("]", "").Replace("\"", "").Replace(",", " ; ");
+            return Str;
+        }
+
+        private void backgroundWorkerYoodaoDict_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (deserYoodaoDict != null)
+            {
+                Divider2.Show();
+                labelWord.Text = (string)deserYoodaoDict.query;
+                if ((string)deserYoodaoDictPho.phonetic == "" || deserYoodaoDictPho.phonetic == null)
+                {
+                    labelEp.Text = "| ω・´) ";
+                }
+                else
+                {
+                    labelEp.Text = replaceJson(deserYoodaoDictPho.phonetic.ToString());
+                }
+                labelPos1.Text = "基本";
+                labelMn1.Text = replaceJson(deserYoodaoDict.translation[0].ToString());
+                labelPos2.Text = "其他";
+
+                string ExpStr = "";
+                for (int i = 0; i < deserYoodaoDictPho.explains.Count; i++)
+                {
+                    if (i == deserYoodaoDictPho.explains.Count - 1)
+                    {
+                        ExpStr = ExpStr + deserYoodaoDictPho.explains[i].ToString();
+                    }
+                    else
+                    {
+                        ExpStr = ExpStr + deserYoodaoDictPho.explains[i].ToString() + " ; ";
+                    }
+                }
+                labelMn2.Text = ExpStr;
+
+                labelPos3.Text = "";
+                labelMn3.Text = "";
+                labelPos4.Text = "";
+                labelMn4.Text = "";
+            }
+
+            btnSearch.Enabled = true;
         }
     }
 }

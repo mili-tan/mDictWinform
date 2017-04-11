@@ -247,6 +247,7 @@
             // backgroundWorkerYoodaoDict
             // 
             this.backgroundWorkerYoodaoDict.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerYoodaoDict_DoWork);
+            this.backgroundWorkerYoodaoDict.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerYoodaoDict_RunWorkerCompleted);
             // 
             // Form1
             // 
