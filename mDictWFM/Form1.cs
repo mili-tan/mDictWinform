@@ -46,6 +46,16 @@ namespace mDictWFM
             {
                 backgroundWorkerBingDict.RunWorkerAsync();
             }
+
+            labelPos1.Text = "";
+            labelMn1.Text = "";
+            labelPos2.Text = "";
+            labelMn2.Text = "";
+            labelPos3.Text = "";
+            labelMn3.Text = "";
+            labelPos4.Text = "";
+            labelMn4.Text = "";
+
             btnSearch.Enabled = false;
         }
 
@@ -206,7 +216,6 @@ namespace mDictWFM
             {
                 string postData = string.Format("q={0}", HttpUtility.UrlEncode(wordText.Text, Encoding.UTF8));
                 string wordExplain = postWeb(yoodaoDictPath, postData);
-                MessageBox.Show(wordExplain);
                 if (wordExplain != null || wordExplain != "" || wordExplain != " ")
                 {
                     deserYoodaoDict = JsonConvert.DeserializeObject<dictDataYoodao>(wordExplain);
@@ -229,7 +238,6 @@ namespace mDictWFM
                 }
                 else
                 {
-                    MessageBox.Show("很抱歉\n\r" + errorMsg.Message);
 
                 }
             }
@@ -246,32 +254,50 @@ namespace mDictWFM
             if (deserYoodaoDict != null)
             {
                 Divider2.Show();
-                labelWord.Text = (string)deserYoodaoDict.query;
-                if ((string)deserYoodaoDictPho.phonetic == "" || deserYoodaoDictPho.phonetic == null)
+                if (deserYoodaoDict.query != null)
                 {
-                    labelEp.Text = "| ω・´) ";
+                    labelWord.Text = (string)deserYoodaoDict.query;
                 }
-                else
-                {
-                    labelEp.Text = replaceJson(deserYoodaoDictPho.phonetic.ToString());
-                }
-                labelPos1.Text = "基本";
-                labelMn1.Text = replaceJson(deserYoodaoDict.translation[0].ToString());
-                labelPos2.Text = "其他";
 
-                string ExpStr = "";
-                for (int i = 0; i < deserYoodaoDictPho.explains.Count; i++)
+                try
                 {
-                    if (i == deserYoodaoDictPho.explains.Count - 1)
+                    if (deserYoodaoDictPho.phonetic == null)
                     {
-                        ExpStr = ExpStr + deserYoodaoDictPho.explains[i].ToString();
+                        labelEp.Text = "| ω・´) ";
                     }
                     else
                     {
-                        ExpStr = ExpStr + deserYoodaoDictPho.explains[i].ToString() + " ; ";
+                        labelEp.Text = replaceJson(deserYoodaoDictPho.phonetic.ToString());
                     }
                 }
-                labelMn2.Text = ExpStr;
+                catch (Exception)
+                {
+                    labelEp.Text = "| ω・´) ";
+                }
+
+                if (deserYoodaoDict.translation != null)
+                {
+                    labelPos1.Text = "基本";
+                    labelMn1.Text = replaceJson(deserYoodaoDict.translation[0].ToString());
+                }
+
+                if (deserYoodaoDictPho != null)
+                {
+                    labelPos2.Text = "其他";
+                    string ExpStr = "";
+                    for (int i = 0; i < deserYoodaoDictPho.explains.Count; i++)
+                    {
+                        if (i == deserYoodaoDictPho.explains.Count - 1)
+                        {
+                            ExpStr = ExpStr + deserYoodaoDictPho.explains[i].ToString();
+                        }
+                        else
+                        {
+                            ExpStr = ExpStr + deserYoodaoDictPho.explains[i].ToString() + " ; ";
+                        }
+                    }
+                    labelMn2.Text = ExpStr;
+                }
 
                 labelPos3.Text = "";
                 labelMn3.Text = "";
