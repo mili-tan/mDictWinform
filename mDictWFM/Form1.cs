@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Text;
 using System.Web;
+using System.Runtime.InteropServices;
 
 namespace mDictWFM
 {
@@ -18,6 +19,21 @@ namespace mDictWFM
         dictDataYoodaoPho deserYoodaoDictPho;
         string bingDictPath = "http://xtk.azurewebsites.net/BingService.aspx";
         string yoodaoDictPath = "http://fanyi.youdao.com/openapi.do?keyfrom=mdict-milione&key=900659837&type=data&doctype=json&version=1.1";
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, KeyModifiers fsModifiers, Keys vk);
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        [Flags()]
+        public enum KeyModifiers
+        {
+            None = 0,
+            Alt = 1,
+            Control = 2,
+            Shift = 4,
+            Windows = 8
+        }
 
         public Form1()
         {
@@ -33,6 +49,7 @@ namespace mDictWFM
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            RegisterHotKey(Handle, 233, KeyModifiers.Control, Keys.M);
             Divider2.Hide();
         }
 
@@ -306,6 +323,25 @@ namespace mDictWFM
             }
 
             btnSearch.Enabled = true;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UnregisterHotKey(Handle, 233);
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case 0x0312: 
+                    if (m.WParam.ToString() == "233")
+                    {
+                        MessageBox.Show("HotKeyOK");
+                    }
+                    break;
+            }
+            base.WndProc(ref m);
         }
     }
 }
