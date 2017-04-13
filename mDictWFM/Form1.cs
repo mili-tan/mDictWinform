@@ -9,11 +9,15 @@ using Newtonsoft.Json;
 using System.Text;
 using System.Web;
 using System.Runtime.InteropServices;
+using System.Drawing;
+using Windows.UI;
 
 namespace mDictWFM
 {
     public partial class Form1 : MaterialForm
     {
+        Icon ico = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
         dictDataBing deserBingDict;
         dictDataYoodao deserYoodaoDict;
         dictDataYoodaoPho deserYoodaoDictPho;
@@ -29,6 +33,7 @@ namespace mDictWFM
         public enum KeyModifiers
         {
             None = 0,
+            CtrlAlt = 3,
             Alt = 1,
             Control = 2,
             Shift = 4,
@@ -49,7 +54,8 @@ namespace mDictWFM
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            RegisterHotKey(Handle, 233, KeyModifiers.Control, Keys.M);
+            MaximizeBox = false;
+            RegisterHotKey(Handle, 233, KeyModifiers.CtrlAlt, Keys.M);
             Divider2.Hide();
         }
 
@@ -340,8 +346,12 @@ namespace mDictWFM
                         IDataObject dataClip = Clipboard.GetDataObject();
                         if (dataClip.GetDataPresent(DataFormats.Text))
                         {
+
                             wordText.Text = dataClip.GetData(DataFormats.Text).ToString();
                             btnSearch_Click(0, null);
+                            Activate();
+                            WindowState = FormWindowState.Normal;
+                            wordText.Focus();
                         }
                     }
                     break;
