@@ -337,7 +337,12 @@ namespace mDictWFM
                 case 0x0312: 
                     if (m.WParam.ToString() == "233")
                     {
-                        MessageBox.Show("HotKeyOK");
+                        IDataObject dataClip = Clipboard.GetDataObject();
+                        if (dataClip.GetDataPresent(DataFormats.Text))
+                        {
+                            wordText.Text = dataClip.GetData(DataFormats.Text).ToString();
+                            btnSearch_Click(0, null);
+                        }
                     }
                     break;
             }
