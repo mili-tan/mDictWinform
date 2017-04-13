@@ -10,7 +10,6 @@ using System.Text;
 using System.Web;
 using System.Runtime.InteropServices;
 using System.Drawing;
-using Windows.UI;
 
 namespace mDictWFM
 {
