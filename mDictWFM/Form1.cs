@@ -86,6 +86,7 @@ namespace mDictWFM
             labelMn4.Text = "";
 
             btnSearch.Enabled = false;
+            Divider2.Hide();
         }
 
         public static string postWeb(string url, string postDataStr)
