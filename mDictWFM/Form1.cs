@@ -15,6 +15,10 @@ namespace mDictWFM
 {
     public partial class Form1 : MaterialForm
     {
+        ToolTip toolTipMn1 = new ToolTip()
+            , toolTipMn2 = new ToolTip()
+            , toolTipMn3 = new ToolTip()
+            , toolTipMn4 = new ToolTip();
         Icon ico = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
         dictDataBing deserBingDict;
@@ -356,6 +360,14 @@ namespace mDictWFM
                     break;
             }
             base.WndProc(ref m);
+        }
+
+        private void timerTip_Tick(object sender, EventArgs e)
+        {
+            toolTipMn1.SetToolTip(labelMn1, labelMn1.Text);
+            toolTipMn2.SetToolTip(labelMn2, labelMn2.Text);
+            toolTipMn3.SetToolTip(labelMn3, labelMn3.Text);
+            toolTipMn4.SetToolTip(labelMn4, labelMn4.Text);
         }
     }
 }
