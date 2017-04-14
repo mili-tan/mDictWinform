@@ -59,6 +59,7 @@ namespace mDictWFM
         {
             MaximizeBox = false;
             RegisterHotKey(Handle, 233, KeyModifiers.CtrlAlt, Keys.M);
+            RegisterHotKey(Handle, 234, KeyModifiers.CtrlAlt, Keys.N);
             Divider2.Hide();
         }
 
@@ -73,6 +74,8 @@ namespace mDictWFM
                 backgroundWorkerBingDict.RunWorkerAsync();
             }
 
+            labelWord.Text = "";
+            labelEp.Text = "";
             labelPos1.Text = "";
             labelMn1.Text = "";
             labelPos2.Text = "";
@@ -230,7 +233,7 @@ namespace mDictWFM
             {
                 wordText.Clear();
             }
-            else if (e.KeyData == (Keys.Control | Keys.D1) && wordText.Text != "")
+            else if (e.KeyData == (Keys.Control | Keys.M) && wordText.Text != "")
             {
                 Clipboard.SetDataObject(labelWord.Text + "：" + labelMn1.Text + "；" + labelMn2.Text);
             }
@@ -337,6 +340,7 @@ namespace mDictWFM
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             UnregisterHotKey(Handle, 233);
+            UnregisterHotKey(Handle, 234);
         }
 
         protected override void WndProc(ref Message m)
@@ -356,6 +360,10 @@ namespace mDictWFM
                             WindowState = FormWindowState.Normal;
                             wordText.Focus();
                         }
+                    }
+                    if (m.WParam.ToString() == "234")
+                    {
+                        WindowState = FormWindowState.Minimized;
                     }
                     break;
             }
