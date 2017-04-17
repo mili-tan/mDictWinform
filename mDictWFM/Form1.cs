@@ -74,7 +74,7 @@ namespace mDictWFM
                 backgroundWorkerBingDict.RunWorkerAsync();
             }
 
-            labelWord.Text = "";
+            labelWord.Text = "请稍等…";
             labelEp.Text = "";
             labelPos1.Text = "";
             labelMn1.Text = "";
@@ -187,6 +187,7 @@ namespace mDictWFM
 
         private void backgroundWorkerBingDict_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            labelWord.Text = " ";
             if (deserBingDict != null)
             {
                 Divider2.Show();
@@ -281,6 +282,7 @@ namespace mDictWFM
 
         private void backgroundWorkerYoodaoDict_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            labelWord.Text = " ";
             if (deserYoodaoDict != null)
             {
                 Divider2.Show();
@@ -371,6 +373,7 @@ namespace mDictWFM
             base.WndProc(ref m);
         }
 
+        int loadTime = 1;
         private void timerTip_Tick(object sender, EventArgs e)
         {
             toolTipMn1.SetToolTip(labelMn1, labelMn1.Text);

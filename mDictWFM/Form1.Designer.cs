@@ -246,7 +246,7 @@
             // timerTip
             // 
             this.timerTip.Enabled = true;
-            this.timerTip.Interval = 1000;
+            this.timerTip.Interval = 500;
             this.timerTip.Tick += new System.EventHandler(this.timerTip_Tick);
             // 
             // Form1
