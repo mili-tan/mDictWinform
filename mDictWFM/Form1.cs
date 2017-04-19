@@ -344,6 +344,7 @@ namespace mDictWFM
         {
             UnregisterHotKey(Handle, 233);
             UnregisterHotKey(Handle, 234);
+            Application.Exit();
         }
 
         protected override void WndProc(ref Message m)
