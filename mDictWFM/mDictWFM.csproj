@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mDict.ico" />
+    <None Include="Resources\copy.png" />
     <None Include="Resources\text-to-speech.png" />
   </ItemGroup>
   <ItemGroup>

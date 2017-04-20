@@ -62,6 +62,7 @@ namespace mDictWFM
             RegisterHotKey(Handle, 233, KeyModifiers.CtrlAlt, Keys.M);
             RegisterHotKey(Handle, 234, KeyModifiers.CtrlAlt, Keys.N);
             btnSpeech.Hide();
+            btnCopy.Hide();
             Divider2.Hide();
         }
 
@@ -90,6 +91,7 @@ namespace mDictWFM
             btnSearch.Enabled = false;
             Divider2.Hide();
             btnSpeech.Hide();
+            btnCopy.Hide();
         }
 
         public static string postWeb(string url, string postDataStr)
@@ -231,6 +233,7 @@ namespace mDictWFM
                     labelPos4.Text = deserBingDict.pos4;
                     labelMn4.Text = deserBingDict.mn4;
                 }
+                btnCopy.Show();
             }
 
             btnSearch.Enabled = true;
@@ -303,6 +306,7 @@ namespace mDictWFM
                 if (deserYoodaoDict.query != null)
                 {
                     labelWord.Text = (string)deserYoodaoDict.query;
+                    btnCopy.Show();
                 }
 
                 try
@@ -362,6 +366,11 @@ namespace mDictWFM
             Application.Exit();
         }
 
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetDataObject(labelWord.Text + "：" + labelMn1.Text + "；" + labelMn2.Text);
+        }
+
         private void btnSpeech_Click(object sender, EventArgs e)
         {
             windowsMediaPlayer.URL = voicePath;
@@ -395,7 +404,6 @@ namespace mDictWFM
             base.WndProc(ref m);
         }
 
-        int loadTime = 1;
         private void timerTip_Tick(object sender, EventArgs e)
         {
             toolTipMn1.SetToolTip(labelMn1, labelMn1.Text);

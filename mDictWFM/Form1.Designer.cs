@@ -48,8 +48,9 @@
             this.labelPos4 = new System.Windows.Forms.Label();
             this.backgroundWorkerYoodaoDict = new System.ComponentModel.BackgroundWorker();
             this.timerTip = new System.Windows.Forms.Timer(this.components);
-            this.btnSpeech = new MaterialSkin.Controls.MaterialFlatButton();
             this.windowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.btnCopy = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnSpeech = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.windowsMediaPlayer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,9 +62,9 @@
             this.labelAbout.BackColor = System.Drawing.Color.Transparent;
             this.labelAbout.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelAbout.ForeColor = System.Drawing.Color.Silver;
-            this.labelAbout.Location = new System.Drawing.Point(-2, 513);
+            this.labelAbout.Location = new System.Drawing.Point(-2, 424);
             this.labelAbout.Name = "labelAbout";
-            this.labelAbout.Size = new System.Drawing.Size(355, 36);
+            this.labelAbout.Size = new System.Drawing.Size(705, 36);
             this.labelAbout.TabIndex = 0;
             this.labelAbout.Text = "数据来源 : Bing / Youdao";
             this.labelAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -75,7 +76,7 @@
             this.btnSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSearch.Depth = 0;
             this.btnSearch.Icon = null;
-            this.btnSearch.Location = new System.Drawing.Point(281, 77);
+            this.btnSearch.Location = new System.Drawing.Point(631, 77);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSearch.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSearch.Name = "btnSearch";
@@ -93,7 +94,7 @@
             this.wordText.Depth = 0;
             this.wordText.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.wordText.Hint = "输入你想要查询的单词";
-            this.wordText.Location = new System.Drawing.Point(12, 77);
+            this.wordText.Location = new System.Drawing.Point(12, 80);
             this.wordText.MaxLength = 32767;
             this.wordText.MouseState = MaterialSkin.MouseState.HOVER;
             this.wordText.Name = "wordText";
@@ -101,7 +102,7 @@
             this.wordText.SelectedText = "";
             this.wordText.SelectionLength = 0;
             this.wordText.SelectionStart = 0;
-            this.wordText.Size = new System.Drawing.Size(262, 33);
+            this.wordText.Size = new System.Drawing.Size(612, 33);
             this.wordText.TabIndex = 2;
             this.wordText.TabStop = false;
             this.wordText.UseSystemPasswordChar = false;
@@ -112,7 +113,7 @@
             this.labelWord.AutoSize = true;
             this.labelWord.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelWord.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelWord.Location = new System.Drawing.Point(4, 124);
+            this.labelWord.Location = new System.Drawing.Point(12, 125);
             this.labelWord.Name = "labelWord";
             this.labelWord.Size = new System.Drawing.Size(27, 44);
             this.labelWord.TabIndex = 3;
@@ -122,7 +123,7 @@
             // 
             this.labelEp.AutoSize = true;
             this.labelEp.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelEp.Location = new System.Drawing.Point(8, 168);
+            this.labelEp.Location = new System.Drawing.Point(15, 169);
             this.labelEp.Name = "labelEp";
             this.labelEp.Size = new System.Drawing.Size(13, 22);
             this.labelEp.TabIndex = 4;
@@ -140,105 +141,121 @@
             this.Divider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Divider1.Depth = 0;
             this.Divider1.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.Divider1.Location = new System.Drawing.Point(0, 513);
+            this.Divider1.Location = new System.Drawing.Point(0, 424);
             this.Divider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.Divider1.Name = "Divider1";
-            this.Divider1.Size = new System.Drawing.Size(355, 1);
+            this.Divider1.Size = new System.Drawing.Size(705, 1);
             this.Divider1.TabIndex = 5;
             this.Divider1.Text = "materialDivider1";
             // 
             // labelPos1
             // 
+            this.labelPos1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPos1.AutoEllipsis = true;
             this.labelPos1.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPos1.Location = new System.Drawing.Point(5, 218);
+            this.labelPos1.Location = new System.Drawing.Point(14, 210);
             this.labelPos1.Name = "labelPos1";
-            this.labelPos1.Size = new System.Drawing.Size(342, 21);
+            this.labelPos1.Size = new System.Drawing.Size(673, 21);
             this.labelPos1.TabIndex = 6;
             this.labelPos1.Tag = "";
             this.labelPos1.Text = " ";
             // 
             // Divider2
             // 
-            this.Divider2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.Divider2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Divider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Divider2.Depth = 0;
             this.Divider2.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.Divider2.Location = new System.Drawing.Point(-2, 205);
+            this.Divider2.Location = new System.Drawing.Point(-2, 202);
             this.Divider2.MouseState = MaterialSkin.MouseState.HOVER;
             this.Divider2.Name = "Divider2";
-            this.Divider2.Size = new System.Drawing.Size(355, 1);
+            this.Divider2.Size = new System.Drawing.Size(705, 1);
             this.Divider2.TabIndex = 7;
             this.Divider2.Text = "materialDivider2";
             // 
             // labelMn1
             // 
+            this.labelMn1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMn1.AutoEllipsis = true;
             this.labelMn1.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMn1.Location = new System.Drawing.Point(3, 239);
+            this.labelMn1.Location = new System.Drawing.Point(12, 231);
             this.labelMn1.Name = "labelMn1";
-            this.labelMn1.Size = new System.Drawing.Size(346, 30);
+            this.labelMn1.Size = new System.Drawing.Size(677, 30);
             this.labelMn1.TabIndex = 8;
             this.labelMn1.Text = " ";
             // 
             // labelMn2
             // 
+            this.labelMn2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMn2.AutoEllipsis = true;
             this.labelMn2.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMn2.Location = new System.Drawing.Point(3, 290);
+            this.labelMn2.Location = new System.Drawing.Point(12, 282);
             this.labelMn2.Name = "labelMn2";
-            this.labelMn2.Size = new System.Drawing.Size(346, 30);
+            this.labelMn2.Size = new System.Drawing.Size(677, 30);
             this.labelMn2.TabIndex = 10;
             this.labelMn2.Text = " ";
             // 
             // labelPos2
             // 
+            this.labelPos2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPos2.AutoEllipsis = true;
             this.labelPos2.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPos2.Location = new System.Drawing.Point(5, 269);
+            this.labelPos2.Location = new System.Drawing.Point(14, 261);
             this.labelPos2.Name = "labelPos2";
-            this.labelPos2.Size = new System.Drawing.Size(342, 21);
+            this.labelPos2.Size = new System.Drawing.Size(673, 21);
             this.labelPos2.TabIndex = 9;
             this.labelPos2.Text = " ";
             // 
             // labelMn3
             // 
+            this.labelMn3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMn3.AutoEllipsis = true;
             this.labelMn3.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMn3.Location = new System.Drawing.Point(3, 341);
+            this.labelMn3.Location = new System.Drawing.Point(12, 333);
             this.labelMn3.Name = "labelMn3";
-            this.labelMn3.Size = new System.Drawing.Size(346, 30);
+            this.labelMn3.Size = new System.Drawing.Size(677, 30);
             this.labelMn3.TabIndex = 12;
             this.labelMn3.Text = " ";
             // 
             // labelPos3
             // 
+            this.labelPos3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPos3.AutoEllipsis = true;
             this.labelPos3.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPos3.Location = new System.Drawing.Point(5, 320);
+            this.labelPos3.Location = new System.Drawing.Point(14, 312);
             this.labelPos3.Name = "labelPos3";
-            this.labelPos3.Size = new System.Drawing.Size(342, 21);
+            this.labelPos3.Size = new System.Drawing.Size(673, 21);
             this.labelPos3.TabIndex = 11;
             this.labelPos3.Text = " ";
             // 
             // labelMn4
             // 
+            this.labelMn4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMn4.AutoEllipsis = true;
             this.labelMn4.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMn4.Location = new System.Drawing.Point(3, 392);
+            this.labelMn4.Location = new System.Drawing.Point(12, 384);
             this.labelMn4.Name = "labelMn4";
-            this.labelMn4.Size = new System.Drawing.Size(344, 30);
+            this.labelMn4.Size = new System.Drawing.Size(675, 30);
             this.labelMn4.TabIndex = 14;
             this.labelMn4.Text = " ";
             // 
             // labelPos4
             // 
+            this.labelPos4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPos4.AutoEllipsis = true;
             this.labelPos4.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPos4.Location = new System.Drawing.Point(5, 371);
+            this.labelPos4.Location = new System.Drawing.Point(14, 363);
             this.labelPos4.Name = "labelPos4";
-            this.labelPos4.Size = new System.Drawing.Size(342, 21);
+            this.labelPos4.Size = new System.Drawing.Size(673, 21);
             this.labelPos4.TabIndex = 13;
             this.labelPos4.Text = " ";
             // 
@@ -253,6 +270,35 @@
             this.timerTip.Interval = 500;
             this.timerTip.Tick += new System.EventHandler(this.timerTip_Tick);
             // 
+            // windowsMediaPlayer
+            // 
+            this.windowsMediaPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.windowsMediaPlayer.Enabled = true;
+            this.windowsMediaPlayer.Location = new System.Drawing.Point(12, 438);
+            this.windowsMediaPlayer.Name = "windowsMediaPlayer";
+            this.windowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("windowsMediaPlayer.OcxState")));
+            this.windowsMediaPlayer.Size = new System.Drawing.Size(10, 10);
+            this.windowsMediaPlayer.TabIndex = 16;
+            this.windowsMediaPlayer.Visible = false;
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.AutoSize = true;
+            this.btnCopy.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCopy.Depth = 0;
+            this.btnCopy.Icon = global::mDictWFM.Properties.Resources.copy;
+            this.btnCopy.Location = new System.Drawing.Point(568, 155);
+            this.btnCopy.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCopy.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Primary = false;
+            this.btnCopy.Size = new System.Drawing.Size(119, 36);
+            this.btnCopy.TabIndex = 17;
+            this.btnCopy.Text = "复制释义";
+            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            // 
             // btnSpeech
             // 
             this.btnSpeech.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -260,31 +306,23 @@
             this.btnSpeech.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSpeech.Depth = 0;
             this.btnSpeech.Icon = global::mDictWFM.Properties.Resources.text_to_speech;
-            this.btnSpeech.Location = new System.Drawing.Point(293, 154);
+            this.btnSpeech.Location = new System.Drawing.Point(476, 155);
             this.btnSpeech.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSpeech.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSpeech.Name = "btnSpeech";
             this.btnSpeech.Primary = false;
-            this.btnSpeech.Size = new System.Drawing.Size(44, 36);
+            this.btnSpeech.Size = new System.Drawing.Size(84, 36);
             this.btnSpeech.TabIndex = 15;
+            this.btnSpeech.Text = "朗读";
             this.btnSpeech.UseVisualStyleBackColor = true;
             this.btnSpeech.Click += new System.EventHandler(this.btnSpeech_Click);
-            // 
-            // windowsMediaPlayer
-            // 
-            this.windowsMediaPlayer.Enabled = true;
-            this.windowsMediaPlayer.Location = new System.Drawing.Point(337, 497);
-            this.windowsMediaPlayer.Name = "windowsMediaPlayer";
-            this.windowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("windowsMediaPlayer.OcxState")));
-            this.windowsMediaPlayer.Size = new System.Drawing.Size(10, 10);
-            this.windowsMediaPlayer.TabIndex = 16;
-            this.windowsMediaPlayer.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 549);
+            this.ClientSize = new System.Drawing.Size(700, 460);
+            this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.windowsMediaPlayer);
             this.Controls.Add(this.btnSpeech);
             this.Controls.Add(this.labelMn4);
@@ -337,6 +375,7 @@
         private System.Windows.Forms.Timer timerTip;
         private MaterialSkin.Controls.MaterialFlatButton btnSpeech;
         private AxWMPLib.AxWindowsMediaPlayer windowsMediaPlayer;
+        private MaterialSkin.Controls.MaterialFlatButton btnCopy;
     }
 }
 
