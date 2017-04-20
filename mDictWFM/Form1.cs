@@ -89,6 +89,7 @@ namespace mDictWFM
 
             btnSearch.Enabled = false;
             Divider2.Hide();
+            btnSpeech.Hide();
         }
 
         public static string postWeb(string url, string postDataStr)
@@ -195,9 +196,19 @@ namespace mDictWFM
             {
                 Divider2.Show();
                 labelWord.Text = deserBingDict.word;
+                if (deserBingDict.ames != null || deserBingDict.ames != "" || deserBingDict.ames != " ")
+                {
+                    voicePath = deserBingDict.ames;
+                    btnSpeech.Show();
+                }
+                else
+                {
+                    btnSpeech.Hide();
+                }
                 if (deserBingDict.amep == "" || deserBingDict.amep == null)
                 {
                     labelEp.Text = "| ω・´) ";
+                    btnSpeech.Hide();
                 }
                 else
                 {
@@ -219,15 +230,6 @@ namespace mDictWFM
                 {
                     labelPos4.Text = deserBingDict.pos4;
                     labelMn4.Text = deserBingDict.mn4;
-                }
-                if (deserBingDict.ames != null || deserBingDict.ames != "")
-                {
-                    voicePath = deserBingDict.ames;
-                    btnSpeech.Show();
-                }
-                else
-                {
-                    btnSpeech.Hide();
                 }
             }
 
@@ -362,7 +364,8 @@ namespace mDictWFM
 
         private void btnSpeech_Click(object sender, EventArgs e)
         {
-
+            windowsMediaPlayer.URL = voicePath;
+            windowsMediaPlayer.Ctlcontrols.play();
         }
 
         protected override void WndProc(ref Message m)
