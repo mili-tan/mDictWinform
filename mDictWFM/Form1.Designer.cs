@@ -151,9 +151,9 @@
             // 
             this.labelPos1.AutoEllipsis = true;
             this.labelPos1.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPos1.Location = new System.Drawing.Point(4, 218);
+            this.labelPos1.Location = new System.Drawing.Point(5, 218);
             this.labelPos1.Name = "labelPos1";
-            this.labelPos1.Size = new System.Drawing.Size(343, 21);
+            this.labelPos1.Size = new System.Drawing.Size(342, 21);
             this.labelPos1.TabIndex = 6;
             this.labelPos1.Tag = "";
             this.labelPos1.Text = " ";
@@ -176,9 +176,9 @@
             // 
             this.labelMn1.AutoEllipsis = true;
             this.labelMn1.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMn1.Location = new System.Drawing.Point(2, 239);
+            this.labelMn1.Location = new System.Drawing.Point(3, 239);
             this.labelMn1.Name = "labelMn1";
-            this.labelMn1.Size = new System.Drawing.Size(347, 30);
+            this.labelMn1.Size = new System.Drawing.Size(346, 30);
             this.labelMn1.TabIndex = 8;
             this.labelMn1.Text = " ";
             // 
@@ -186,9 +186,9 @@
             // 
             this.labelMn2.AutoEllipsis = true;
             this.labelMn2.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMn2.Location = new System.Drawing.Point(2, 290);
+            this.labelMn2.Location = new System.Drawing.Point(3, 290);
             this.labelMn2.Name = "labelMn2";
-            this.labelMn2.Size = new System.Drawing.Size(347, 30);
+            this.labelMn2.Size = new System.Drawing.Size(346, 30);
             this.labelMn2.TabIndex = 10;
             this.labelMn2.Text = " ";
             // 
@@ -196,9 +196,9 @@
             // 
             this.labelPos2.AutoEllipsis = true;
             this.labelPos2.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPos2.Location = new System.Drawing.Point(4, 269);
+            this.labelPos2.Location = new System.Drawing.Point(5, 269);
             this.labelPos2.Name = "labelPos2";
-            this.labelPos2.Size = new System.Drawing.Size(343, 21);
+            this.labelPos2.Size = new System.Drawing.Size(342, 21);
             this.labelPos2.TabIndex = 9;
             this.labelPos2.Text = " ";
             // 
@@ -206,9 +206,9 @@
             // 
             this.labelMn3.AutoEllipsis = true;
             this.labelMn3.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMn3.Location = new System.Drawing.Point(2, 341);
+            this.labelMn3.Location = new System.Drawing.Point(3, 341);
             this.labelMn3.Name = "labelMn3";
-            this.labelMn3.Size = new System.Drawing.Size(347, 30);
+            this.labelMn3.Size = new System.Drawing.Size(346, 30);
             this.labelMn3.TabIndex = 12;
             this.labelMn3.Text = " ";
             // 
@@ -216,9 +216,9 @@
             // 
             this.labelPos3.AutoEllipsis = true;
             this.labelPos3.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPos3.Location = new System.Drawing.Point(4, 320);
+            this.labelPos3.Location = new System.Drawing.Point(5, 320);
             this.labelPos3.Name = "labelPos3";
-            this.labelPos3.Size = new System.Drawing.Size(343, 21);
+            this.labelPos3.Size = new System.Drawing.Size(342, 21);
             this.labelPos3.TabIndex = 11;
             this.labelPos3.Text = " ";
             // 
@@ -226,9 +226,9 @@
             // 
             this.labelMn4.AutoEllipsis = true;
             this.labelMn4.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMn4.Location = new System.Drawing.Point(2, 392);
+            this.labelMn4.Location = new System.Drawing.Point(3, 392);
             this.labelMn4.Name = "labelMn4";
-            this.labelMn4.Size = new System.Drawing.Size(345, 30);
+            this.labelMn4.Size = new System.Drawing.Size(344, 30);
             this.labelMn4.TabIndex = 14;
             this.labelMn4.Text = " ";
             // 
@@ -236,9 +236,9 @@
             // 
             this.labelPos4.AutoEllipsis = true;
             this.labelPos4.Font = new System.Drawing.Font("Noto Sans CJK SC Regular", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPos4.Location = new System.Drawing.Point(4, 371);
+            this.labelPos4.Location = new System.Drawing.Point(5, 371);
             this.labelPos4.Name = "labelPos4";
-            this.labelPos4.Size = new System.Drawing.Size(343, 21);
+            this.labelPos4.Size = new System.Drawing.Size(342, 21);
             this.labelPos4.TabIndex = 13;
             this.labelPos4.Text = " ";
             // 
@@ -257,6 +257,7 @@
             // 
             this.btnSpeech.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSpeech.AutoSize = true;
+            this.btnSpeech.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSpeech.Depth = 0;
             this.btnSpeech.Icon = global::mDictWFM.Properties.Resources.text_to_speech;
             this.btnSpeech.Location = new System.Drawing.Point(293, 154);
@@ -301,6 +302,7 @@
             this.Controls.Add(this.wordText);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.labelAbout);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
