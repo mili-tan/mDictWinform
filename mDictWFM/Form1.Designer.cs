@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelAbout = new System.Windows.Forms.Label();
             this.btnSearch = new MaterialSkin.Controls.MaterialFlatButton();
             this.wordText = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -47,6 +48,9 @@
             this.labelPos4 = new System.Windows.Forms.Label();
             this.backgroundWorkerYoodaoDict = new System.ComponentModel.BackgroundWorker();
             this.timerTip = new System.Windows.Forms.Timer(this.components);
+            this.btnSpeech = new MaterialSkin.Controls.MaterialFlatButton();
+            this.windowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            ((System.ComponentModel.ISupportInitialize)(this.windowsMediaPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // labelAbout
@@ -249,11 +253,39 @@
             this.timerTip.Interval = 500;
             this.timerTip.Tick += new System.EventHandler(this.timerTip_Tick);
             // 
+            // btnSpeech
+            // 
+            this.btnSpeech.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSpeech.AutoSize = true;
+            this.btnSpeech.Depth = 0;
+            this.btnSpeech.Icon = global::mDictWFM.Properties.Resources.text_to_speech;
+            this.btnSpeech.Location = new System.Drawing.Point(293, 154);
+            this.btnSpeech.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSpeech.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnSpeech.Name = "btnSpeech";
+            this.btnSpeech.Primary = false;
+            this.btnSpeech.Size = new System.Drawing.Size(44, 36);
+            this.btnSpeech.TabIndex = 15;
+            this.btnSpeech.UseVisualStyleBackColor = true;
+            this.btnSpeech.Click += new System.EventHandler(this.btnSpeech_Click);
+            // 
+            // windowsMediaPlayer
+            // 
+            this.windowsMediaPlayer.Enabled = true;
+            this.windowsMediaPlayer.Location = new System.Drawing.Point(337, 497);
+            this.windowsMediaPlayer.Name = "windowsMediaPlayer";
+            this.windowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("windowsMediaPlayer.OcxState")));
+            this.windowsMediaPlayer.Size = new System.Drawing.Size(10, 10);
+            this.windowsMediaPlayer.TabIndex = 16;
+            this.windowsMediaPlayer.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 549);
+            this.Controls.Add(this.windowsMediaPlayer);
+            this.Controls.Add(this.btnSpeech);
             this.Controls.Add(this.labelMn4);
             this.Controls.Add(this.labelPos4);
             this.Controls.Add(this.labelMn3);
@@ -275,6 +307,7 @@
             this.Text = "mDict";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.windowsMediaPlayer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,6 +333,8 @@
         private System.Windows.Forms.Label labelPos4;
         private System.ComponentModel.BackgroundWorker backgroundWorkerYoodaoDict;
         private System.Windows.Forms.Timer timerTip;
+        private MaterialSkin.Controls.MaterialFlatButton btnSpeech;
+        private AxWMPLib.AxWindowsMediaPlayer windowsMediaPlayer;
     }
 }
 

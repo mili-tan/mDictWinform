@@ -24,6 +24,7 @@ namespace mDictWFM
         dictDataBing deserBingDict;
         dictDataYoodao deserYoodaoDict;
         dictDataYoodaoPho deserYoodaoDictPho;
+        string voicePath;
         string bingDictPath = "http://xtk.azurewebsites.net/BingService.aspx";
         string yoodaoDictPath = "http://fanyi.youdao.com/openapi.do?keyfrom=mdict-milione&key=900659837&type=data&doctype=json&version=1.1";
 
@@ -60,6 +61,7 @@ namespace mDictWFM
             MaximizeBox = false;
             RegisterHotKey(Handle, 233, KeyModifiers.CtrlAlt, Keys.M);
             RegisterHotKey(Handle, 234, KeyModifiers.CtrlAlt, Keys.N);
+            btnSpeech.Hide();
             Divider2.Hide();
         }
 
@@ -130,6 +132,7 @@ namespace mDictWFM
         {
             public String word { get; set; }
             public String amep { get; set; }
+            public String ames { get; set; }
             public String mn1 { get; set; }
             public String mn2 { get; set; }
             public String pos1 { get; set; }
@@ -216,6 +219,15 @@ namespace mDictWFM
                 {
                     labelPos4.Text = deserBingDict.pos4;
                     labelMn4.Text = deserBingDict.mn4;
+                }
+                if (deserBingDict.ames != null || deserBingDict.ames != "")
+                {
+                    voicePath = deserBingDict.ames;
+                    btnSpeech.Show();
+                }
+                else
+                {
+                    btnSpeech.Hide();
                 }
             }
 
@@ -338,6 +350,7 @@ namespace mDictWFM
             }
 
             btnSearch.Enabled = true;
+            btnSpeech.Hide();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -345,6 +358,11 @@ namespace mDictWFM
             UnregisterHotKey(Handle, 233);
             UnregisterHotKey(Handle, 234);
             Application.Exit();
+        }
+
+        private void btnSpeech_Click(object sender, EventArgs e)
+        {
+
         }
 
         protected override void WndProc(ref Message m)
