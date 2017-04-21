@@ -51,6 +51,7 @@
             this.windowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.btnCopy = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnSpeech = new MaterialSkin.Controls.MaterialFlatButton();
+            this.backgroundWorkerSpeech = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.windowsMediaPlayer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -318,6 +319,10 @@
             this.btnSpeech.UseVisualStyleBackColor = true;
             this.btnSpeech.Click += new System.EventHandler(this.btnSpeech_Click);
             // 
+            // backgroundWorkerSpeech
+            // 
+            this.backgroundWorkerSpeech.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSpeech_DoWork);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -377,6 +382,7 @@
         private MaterialSkin.Controls.MaterialFlatButton btnSpeech;
         private AxWMPLib.AxWindowsMediaPlayer windowsMediaPlayer;
         private MaterialSkin.Controls.MaterialFlatButton btnCopy;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerSpeech;
     }
 }
 

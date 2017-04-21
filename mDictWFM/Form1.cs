@@ -20,6 +20,7 @@ namespace mDictWFM
             , toolTipMn3 = new ToolTip()
             , toolTipMn4 = new ToolTip();
         Icon ico = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+        bool epType = false;
 
         dictDataBing deserBingDict;
         dictDataYoodao deserYoodaoDict;
@@ -201,6 +202,7 @@ namespace mDictWFM
                 if (deserBingDict.ames != null || deserBingDict.ames != "" || deserBingDict.ames != " ")
                 {
                     voicePath = deserBingDict.ames;
+                    epType = true;
                     btnSpeech.Show();
                 }
                 else
@@ -329,6 +331,8 @@ namespace mDictWFM
                 {
                     labelPos1.Text = "基本";
                     labelMn1.Text = replaceJson(deserYoodaoDict.translation[0].ToString());
+                    epType = false;
+                    btnSpeech.Show();
                 }
 
                 if (deserYoodaoDictPho != null)
@@ -356,7 +360,6 @@ namespace mDictWFM
             }
 
             btnSearch.Enabled = true;
-            btnSpeech.Hide();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -371,10 +374,31 @@ namespace mDictWFM
             Clipboard.SetDataObject(labelWord.Text + "：" + labelMn1.Text + "；" + labelMn2.Text);
         }
 
+        private void backgroundWorkerSpeech_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            try
+            {
+                Type spType = Type.GetTypeFromProgID("SAPI.SpVoice");
+                dynamic spVoice = Activator.CreateInstance(spType);
+                spVoice.Speak(labelMn1.Text);
+            }
+            catch
+            {
+                MessageBox.Show("很抱歉\n\r" + "似乎发生了一些事情？\n\r请检查系统音频设备或TTS软件是否正常。");
+            }
+        }
+
         private void btnSpeech_Click(object sender, EventArgs e)
         {
-            windowsMediaPlayer.URL = voicePath;
-            windowsMediaPlayer.Ctlcontrols.play();
+            if (epType)
+            {
+                windowsMediaPlayer.URL = voicePath;
+                windowsMediaPlayer.Ctlcontrols.play();
+            }
+            else
+            {
+                backgroundWorkerSpeech.RunWorkerAsync();
+            }
         }
 
         protected override void WndProc(ref Message m)
