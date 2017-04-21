@@ -21,6 +21,7 @@ namespace mDictWFM
             , toolTipMn4 = new ToolTip();
         Icon ico = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         bool epType = false;
+        bool bingEpType = false;
 
         dictDataBing deserBingDict;
         dictDataYoodao deserYoodaoDict;
@@ -202,17 +203,16 @@ namespace mDictWFM
                 if (deserBingDict.ames != null || deserBingDict.ames != "" || deserBingDict.ames != " ")
                 {
                     voicePath = deserBingDict.ames;
-                    epType = true;
-                    btnSpeech.Show();
+                    bingEpType = true;
                 }
                 else
                 {
-                    btnSpeech.Hide();
+                    bingEpType = false;
                 }
                 if (deserBingDict.amep == "" || deserBingDict.amep == null)
                 {
                     labelEp.Text = "| ω・´) ";
-                    btnSpeech.Hide();
+                    bingEpType = false;
                 }
                 else
                 {
@@ -236,6 +236,8 @@ namespace mDictWFM
                     labelMn4.Text = deserBingDict.mn4;
                 }
                 btnCopy.Show();
+                epType = true;
+                btnSpeech.Show();
             }
 
             btnSearch.Enabled = true;
@@ -380,7 +382,14 @@ namespace mDictWFM
             {
                 Type spType = Type.GetTypeFromProgID("SAPI.SpVoice");
                 dynamic spVoice = Activator.CreateInstance(spType);
-                spVoice.Speak(labelMn1.Text);
+                if (epType)
+                {
+                    spVoice.Speak(labelWord.Text);
+                }
+                else
+                {
+                    spVoice.Speak(labelMn1.Text);
+                }
             }
             catch
             {
@@ -392,8 +401,15 @@ namespace mDictWFM
         {
             if (epType)
             {
-                windowsMediaPlayer.URL = voicePath;
-                windowsMediaPlayer.Ctlcontrols.play();
+                if (bingEpType)
+                {
+                    windowsMediaPlayer.URL = voicePath;
+                    windowsMediaPlayer.Ctlcontrols.play();
+                }
+                else
+                {
+                    backgroundWorkerSpeech.RunWorkerAsync();
+                }
             }
             else
             {
