@@ -10,6 +10,7 @@ using System.Text;
 using System.Web;
 using System.Runtime.InteropServices;
 using System.Drawing;
+using OneSet.EffectsWindow;
 
 namespace mDictWFM
 {
@@ -61,6 +62,7 @@ namespace mDictWFM
         private void Form1_Load(object sender, EventArgs e)
         {
             MaximizeBox = false;
+            Fx.EffectsWindow(Handle, 300, Fx.AW_BLEND);
             RegisterHotKey(Handle, 233, KeyModifiers.CtrlAlt, Keys.M);
             RegisterHotKey(Handle, 234, KeyModifiers.CtrlAlt, Keys.N);
             btnSpeech.Hide();
