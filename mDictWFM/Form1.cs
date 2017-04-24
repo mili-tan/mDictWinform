@@ -62,12 +62,12 @@ namespace mDictWFM
         private void Form1_Load(object sender, EventArgs e)
         {
             MaximizeBox = false;
-            Fx.EffectsWindow(Handle, 100, Fx.AW_BLEND);
             RegisterHotKey(Handle, 233, KeyModifiers.CtrlAlt, Keys.M);
             RegisterHotKey(Handle, 234, KeyModifiers.CtrlAlt, Keys.N);
             btnSpeech.Hide();
             btnCopy.Hide();
             Divider2.Hide();
+            Fx.EffectsWindow(Handle, 100, Fx.AW_BLEND);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -368,7 +368,7 @@ namespace mDictWFM
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Fx.EffectsWindow(this.Handle, 100, Fx.AW_HIDE + Fx.AW_BLEND);
+            Fx.EffectsWindow(Handle, 100, Fx.AW_HIDE + Fx.AW_BLEND);
             UnregisterHotKey(Handle, 233);
             UnregisterHotKey(Handle, 234);
             Application.Exit();
@@ -400,19 +400,21 @@ namespace mDictWFM
             }
         }
 
-        private void Form1_SizeChanged(object sender, EventArgs e)
+        private void backgroundWorkerSpeech_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-
+            btnSpeech.Enabled = true;
         }
 
         private void btnSpeech_Click(object sender, EventArgs e)
         {
+            btnSpeech.Enabled = false;
             if (epType)
             {
                 if (bingEpType)
                 {
                     windowsMediaPlayer.URL = voicePath;
                     windowsMediaPlayer.Ctlcontrols.play();
+                    btnSpeech.Enabled = true;
                 }
                 else
                 {
