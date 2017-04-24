@@ -62,7 +62,7 @@ namespace mDictWFM
         private void Form1_Load(object sender, EventArgs e)
         {
             MaximizeBox = false;
-            Fx.EffectsWindow(Handle, 300, Fx.AW_BLEND);
+            Fx.EffectsWindow(Handle, 100, Fx.AW_BLEND);
             RegisterHotKey(Handle, 233, KeyModifiers.CtrlAlt, Keys.M);
             RegisterHotKey(Handle, 234, KeyModifiers.CtrlAlt, Keys.N);
             btnSpeech.Hide();
@@ -368,6 +368,7 @@ namespace mDictWFM
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Fx.EffectsWindow(this.Handle, 100, Fx.AW_HIDE + Fx.AW_BLEND);
             UnregisterHotKey(Handle, 233);
             UnregisterHotKey(Handle, 234);
             Application.Exit();
@@ -397,6 +398,11 @@ namespace mDictWFM
             {
                 MessageBox.Show("很抱歉\n\r" + "似乎发生了一些事情？\n\r请检查系统音频设备或TTS软件是否正常。");
             }
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void btnSpeech_Click(object sender, EventArgs e)
